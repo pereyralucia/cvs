@@ -1,4 +1,6 @@
 import csv
+import matplotlib.pyplot as plt
+
 totales={}
 unidades={}
 with open("ventas.csv",encoding="utf-8",newline="") as archivo:
@@ -13,4 +15,13 @@ with open("ventas.csv",encoding="utf-8",newline="") as archivo:
         unidades[producto]=unidades.get(producto,0)+cantidad
 print(totales)
 print(unidades) 
-     
+valores=list(totales.values())
+print(valores)
+sucursales = list(totales.keys())
+print(sucursales)
+barras=plt.bar(sucursales,valores,color="brown")
+plt.bar_label(barras, fmt="%.2f")
+plt.xlabel("Sucursales")
+plt.ylabel("Total Neto ($)")
+plt.title("Total Neto por Sucursal")
+plt.show()
